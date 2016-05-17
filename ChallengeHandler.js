@@ -13,41 +13,52 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-var PinCodeChallengeHandler = function(){
-  PinCodeChallengeHandler = WL.Client.createWLChallengeHandler("PinCodeAttempts");
 
-  PinCodeChallengeHandler.handleChallenge = function(challenge) {
-      var msg = "";
+define(['mfp'], function(WL) {
+    
+    function init() {
+        var PinCodeChallengeHandler = WL.Client.createWLChallengeHandler("PinCodeAttempts");
 
-      // Create the title string for the prompt
-      if(challenge.errorMsg !== null){
-          msg =  challenge.errorMsg + "\n";
-      }
-      else{
-          msg = "This data requires a PIN code.\n";
-      }
-      msg += "Remaining attempts: " + challenge.remainingAttempts;
+        PinCodeChallengeHandler.handleChallenge = function(challenge) {
+            var msg = "";
 
-      // Display a prompt for user to enter the pin code
-      var pinCode = prompt(msg, "");
-      if(pinCode){ // calling submitChallengeAnswer with the entered value
-          PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
-      }
-      else{ // calling submitFailure in case user pressed the cancel button
-          PinCodeChallengeHandler.submitFailure();
-      }
+            // Create the title string for the prompt
+            if(challenge.errorMsg !== null){
+                msg =  challenge.errorMsg + "\n";
+            }
+            else{
+                msg = "This data requires a PIN code.\n";
+            }
+            msg += "Remaining attempts: " + challenge.remainingAttempts;
 
+            // Display a prompt for user to enter the pin code
+            var pinCode = prompt(msg, "");
+            
+            while (pinCode === "") {
+                pinCode = prompt(msg, "");
+            }
+                        
+            if(pinCode){ // calling submitChallengeAnswer with the entered value
+                PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
+            }
+            else{ // calling submitFailure in case user pressed the cancel button
+                PinCodeChallengeHandler.submitFailure();
+            }
+        };
 
-  };
-
-  // handleFailure
-  PinCodeChallengeHandler.handleFailure = function(error) {
-      WL.Logger.debug("Challenge Handler Failure!");
-      if(error.failure !== null && error.failure !== undefined){
-         alert(error.failure);
-      }
-      else {
-         alert("Unknown error");
-      }
-  };
-};
+        // handleFailure
+        PinCodeChallengeHandler.handleFailure = function(error) {
+            WL.Logger.debug("Challenge Handler Failure!");
+            if(error.failure !== null && error.failure !== undefined){
+               alert(error.failure);
+            }
+            else {
+               alert("Unknown error");
+            }
+        };    
+    }
+    
+    return {
+        init: init
+    };
+});

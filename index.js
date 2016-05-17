@@ -14,24 +14,27 @@
 * limitations under the License.
 */
 
+
 require.config({
 	'paths': {
 		'ibmmfpfanalytics': 'node_modules/ibm-mfp-web-sdk/lib/analytics/ibmmfpfanalytics',
-		'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf'
+		'mfp': 'node_modules/ibm-mfp-web-sdk/ibmmfpf',
+		'challengehandler': 'ChallengeHandler'
 	}
 });
 
-require(['ibmmfpfanalytics', 'mfp'], function(wlanalytics, WL) {
+require(['ibmmfpfanalytics', 'mfp', 'challengehandler'], function(wlanalytics, WL, CH) {
     var wlInitOptions = {
-        mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Development Kit
+        mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Developer Kit
         applicationId : 'com.sample.pincodeweb'
     };
 
     WL.Client.init(wlInitOptions).then (
         function() {
             document.getElementById("getBalance").addEventListener('click', getBalance);
-            PinCodeChallengeHandler();
+			CH.init();
     });
+
     
     function getBalance() {
         var resourceRequest = new WLResourceRequest("/adapters/ResourceAdapter/balance",WLResourceRequest.GET);
