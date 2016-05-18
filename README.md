@@ -1,6 +1,6 @@
 IBM MobileFirst Platform Foundation
 ===
-## PinCodeCordova
+## PinCodeWeb
 A sample application demonstrating use of the CredentialsValidation Security Check.
 
 ### Tutorials
