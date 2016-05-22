@@ -34,9 +34,6 @@ define(['mfp'], function(WL) {
             // Display a prompt for user to enter the pin code
             var pinCode = prompt(msg, "");
             
-            while (pinCode === "") {
-                pinCode = prompt(msg, "");
-            }
                         
             if(pinCode){ // calling submitChallengeAnswer with the entered value
                 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
