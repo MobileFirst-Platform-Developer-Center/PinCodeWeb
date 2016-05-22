@@ -41,14 +41,12 @@ require(['ibmmfpfanalytics', 'mfp', 'challengehandler'], function(wlanalytics, W
 
         resourceRequest.send().then(
             function(response) {
-                var jsonObj = JSON.parse(response.responseText);
-                WL.Logger.debug("resourceRequest.send success: "+ response.responseText);
-                document.getElementById("balanceLabel").innerHTML = JSON.stringify(jsonObj);
+                WL.Logger.debug("resourceRequest.send success: " + response.responseText);
+                document.getElementById("balanceLabel").innerHTML = response.responseText;
             },
             function(response) {
-                var jsonObj = JSON.parse(response.responseText);
-                WL.Logger.debug(response.responseText);
-                document.getElementById("balanceLabel").innerHTML = JSON.stringify(jsonObj);
+                WL.Logger.debug("resourceRequest.send success: " + response.errorMsg);
+                document.getElementById("balanceLabel").innerHTML = response.errorMsg;
             }
         );
     }
