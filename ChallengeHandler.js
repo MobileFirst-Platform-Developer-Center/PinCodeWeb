@@ -17,7 +17,7 @@
 define(['mfp'], function(WL) {
     
     function init() {
-        var PinCodeChallengeHandler = WL.Client.createWLChallengeHandler("PinCodeAttempts");
+        var PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCodeAttempts");
 
         PinCodeChallengeHandler.handleChallenge = function(challenge) {
             var msg = "";
@@ -38,8 +38,8 @@ define(['mfp'], function(WL) {
             if(pinCode){ // calling submitChallengeAnswer with the entered value
                 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
             }
-            else{ // calling submitFailure in case user pressed the cancel button
-                PinCodeChallengeHandler.submitFailure();
+            else{ // calling cancel in case user pressed the cancel button
+                PinCodeChallengeHandler.cancel();
             }
         };
 

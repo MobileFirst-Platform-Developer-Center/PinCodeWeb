@@ -23,7 +23,7 @@ require.config({
 	}
 });
 
-require(['ibmmfpfanalytics', 'mfp', 'challengehandler'], function(wlanalytics, WL, CH) {
+require(['ibmmfpfanalytics','mfp', 'challengehandler'], function(wlanalytics, WL, CH) {
     var wlInitOptions = {
         mfpContextRoot : '/mfp', // "mfp" is the default context root in the MobileFirst Developer Kit
         applicationId : 'com.sample.pincodeweb'

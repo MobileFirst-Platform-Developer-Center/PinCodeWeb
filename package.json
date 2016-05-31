@@ -4,7 +4,7 @@
   "description": "PinCodeWeb is a sample application demonstrating use of the CredentialsValidation security check.",
   "dependencies": {
     "express": "latest",
-    "ibm-mfp-web-sdk": "^8.0.2016051608",
+    "ibm-mfp-web-sdk": "latest",
     "request": "latest",
     "requirejs": "latest"
   },
