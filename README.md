@@ -10,7 +10,7 @@ https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authenticat
 
 1. Use either Maven, MobileFirst CLI or your IDE of choice to [build and deploy the available `ResourceAdapter` and `PinCodeAttempts` adapters](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/adapters/creating-adapters/).
 
- The PinCodeAttempts Security Check adapter can be found in https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80.
+ The PinCodeAttempts Security Check adapter and the Resource adapter can be found in https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80.
 
 2. From a command-line window, navigate to the project's root folder and run the command: `mfpdev app register`.
 
@@ -25,6 +25,7 @@ Follow the [Setting up the Web development environment](https://mobilefirstplatf
 
 3. In the MobileFirst Console → PinCodeWeb → Security, map the `accessRestricted` scope to the `PinCodeAttempts` security check.
 4. In a browser, load the URL [http://localhost:9081/sampleapp](http://localhost:9081/sampleapp).
+5. Run the application in a browser. Press the **Get Balance** button and enter "1234" to display the balance.
 
 ### Supported Levels
 IBM MobileFirst Platform Foundation 8.0
